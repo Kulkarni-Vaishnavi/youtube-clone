@@ -1,28 +1,60 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import Menu from './components/Menu';
+import { useState } from "react";
 import { Navbar } from './components/Navbar';
+import { darkTheme ,lightTheme} from './utils/Theme';
+import { Home } from "./pages/Home";
+import { Video } from "./pages/Video";
+
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+} from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
 `
 
 const Main = styled.div`
-  flex: 7;
+  flex:7;  
+  background-color : ${({ theme }) => theme.bg};
 `;
-const Wrapper = styled.div``
+
+
+const Wrapper = styled.div`
+  padding : 20px 40px;
+`;
+
 export const App= () =>{
+
+  const [darkMode, setDarkMode] = useState(true);
+
   return (
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
     <Container>
-    <Menu/>
+    <BrowserRouter>
+    <Menu darkMode={darkMode} setDarkMode={setDarkMode}/>
     <Main>
       <Navbar/>
       <Wrapper>
-        video cards
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home/>}/>
+          <Route path="video">
+            <Route path=":id" element={<Video/>}/>
+          </Route>
+        </Route>
+      </Routes>
       </Wrapper>
     </Main>
+
+    </BrowserRouter>
+   
     </Container>
+    </ThemeProvider>
   );
   
-}
+};
 
