@@ -17,7 +17,7 @@ import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   flex: 1.25;/*times width*/
@@ -91,10 +91,12 @@ const Menu = ({ darkMode, setDarkMode }) => {
   return (
     <Container>
         <Wrapper>
-            <Logo>
-                <Img  src={YouTube}/>
+        <Link to="/" style={{ textDecoration : "none", color: "inherit" }}>
+          <Logo>
+            <Img  src={YouTube}/>
                 YouTube
-            </Logo>
+          </Logo>
+        </Link>  
             <Item>
                 <HomeIcon/>
                 Home
@@ -119,11 +121,12 @@ const Menu = ({ darkMode, setDarkMode }) => {
       <Hr/>
       <Login>
         Sign in to like the videos, comment and subscribe.
+        <Link to="signin" style={{textDecoration : "none"}}>
           <Button>
           <AccountCircleOutlinedIcon />
             SIGN IN
           </Button>
-    
+        </Link>
       </Login>
       <Hr/>
       <Title>BEST OF YOUTUBE</Title>

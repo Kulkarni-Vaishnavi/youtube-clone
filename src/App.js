@@ -12,6 +12,7 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
+import { SignIn } from './pages/SignIn';
 
 const Container = styled.div`
   display: flex;
@@ -42,6 +43,7 @@ export const App= () =>{
       <Routes>
         <Route path="/">
           <Route index element={<Home/>}/>
+          <Route path='signin' element={<SignIn/>}/>
           <Route path="video">
             <Route path=":id" element={<Video/>}/>
           </Route>
